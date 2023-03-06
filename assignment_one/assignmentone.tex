@@ -1,0 +1,186 @@
+
+\documentclass[12pt]{amsart}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+\usepackage[shortlabels]{enumitem}
+% See the ``Article customise'' template for come common customisations
+\usepackage{multirow}
+\title{Assignment One 3346A - AI 1}
+\author{Nicholas Pysklywec}
+%\date{} % delete this line to display the current date
+\usepackage[table]{xcolor}
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+%%% BEGIN DOCUMENT
+\begin{document}
+
+\maketitle
+%\tableofcontents
+
+\section*{Question 1 }
+\textbf{Q.} What is the standard Turing Test? How would you design and improve it for testing true human intelligence? How would you design a “new Turing Test” for consciousness and creativity, respectively?    \hfill \break
+
+\textbf{A.} The standard Turing Test is was designed by Alan Turing to determine whether a given entity was a computer or human. The computer wants to solve a set of questions, and an interrogator will try to determine if the responses were composed by a human or machine. 
+
+To test and design such a test for human intelligence I would ensure that a test would not only involve classification of objects, but also associated meaning, or certain categories. I would ask questions such as “What does this scene remind you of”, and require a written response that will be tied to the situation, but will be quite subjective, and hard to plan for. Such a situation would be difficult for a machine, as it has not opportunity to creativity come up with an original answer. 
+   \hfill \break
+
+\section*{Question 2}
+\textbf{Q.} Can a reflex agent be rational (maximizing the expected utility function) in solving complex problems? Give some examples that it can, and some examples that it cannot.     \hfill \break
+
+\textbf{A.} A reflex agent cannot be rational in solving complex problems, it only has a set of rules it applies to some states, but will not plan in advance. The reflex agent will only choose a set of actions based on the current state, rather than analyzing more information and making a longer term plan. One example of this mentioned in class that can demonstrate this idea is the extinction of neanderthals. Neanderthals were said to be more reflex agents, due to the absence of language, and could only really act on the current state or situation. Ancient humans possessed an ability to be better than this, to be a planning agent, and could use this ability to construct plans that would result in better success. The human ability to act as a planning agent could have potentially led to the extinction of neanderthals as we outsmarted them.   \hfill \break
+
+\section*{Question 3 - (3.14)}
+\textbf{Q.} Which of the following are true, and which are false? Explain your answers.
+
+\begin{enumerate}[a)]
+  \item Depth-first search always expands at least as many nodes as A search with an admissible heuristic.
+   \item $h(n) = 0 $ is an admissible heuristic for an 8-puzzle.
+   \item A* is of no use in robotics because percepts, states, and actions are continuous
+    \item Assume that a rook can move on a chessboard any number of squares in a straight line, vertically or horizontally, but cannot jump over other pieces. Manhattan distance is an admissible heuristic for the problem of moving the rook from square A to square B in the smallest number of moves.
+\end{enumerate} \hfill \break
+
+\textbf{A.}
+
+\begin{enumerate}[a)]
+\item False, DFS is not an intelligent search function, it only is leftmost in it's search. It may sometimes expand less nodes as A* by a small chance. Therefore we cannot say a DFS search will always at least search as many nodes in all cases when it sometimes could potentially uncover a solution quicker.
+\item True, h(0) is admissible as it follows the rules required for a heuristic function in that it is less than the true cost to the goal, and additionally greater than, or equal to zero. However using a heuristic function equal to zero would end up with a A star search essentially equal to a uniform cost search.
+\item False, A star search can be used for path planning of robots. The environment can be determined, converted to proper states, and a robot could perform A star search to determine an optimal path. 
+\item True, in breadth first search depth is only considered in the search. 
+\item False, the rook can move a full column of squares at once in chess. The heuristic function of manhattan distance would be inadmissible for the reasoning that it would provide a heuristic greater than the cost. 
+\end{enumerate} \hfill \break
+   
+\section*{Question 4 - (3.6)}
+\textbf{Q.}  Give a complete problem formulation for each of the following. Choose a formulation that is precise enough to be implemented. 
+
+\begin{enumerate}[a)]
+  \item Using only four colors, you have to color a planar map so that no two adjacent regions have the same color.
+
+    \item A 3-foot tall monkey is in a room where some bananas are suspended from the 8-foot ceiling. He would like to get the bananas. The room contains two stackable, movable, climbable 3-foot- high crates.
+
+       \item  You have a program that outputs the message “illegal input record” when fed a certain file of input records. You know that processing of each record is independent of the other records. You want to discover what record is illegal.
+       
+        \item You have three jugs measuring 12 gallons, 8 gallons, and 3 gallons, and a water faucet. You can fill the jugs up or empty them out from one to another or onto the ground. You need to measure out exactly one gallon.
+\end{enumerate} \hfill \break
+
+\textbf{A.}
+
+\begin{enumerate}[a)]
+\item \{State Space: The planer map with every region associated with a colour, or no colour,Start State: The planar map with no colours associated with any regions ,Successor Function: Apply one colour to one region, Goal Test:  The entire planar map is filled in with no two colours being adjacent\}
+\item \{State Space: A 2d map of the space. The two boxes, monkey, and bananas will all have some discrete positions they can all be in. ,Start State: A 2d map of the space representing the y plane. The monkey is standing in the middle of the room, with two lone crates, and the bananas above him located at 9 feet. ,Successor Function: The monkey moves itself. Additionally, if a monkey is adjacent a crate, it can grab crate and drag it, or alternatively stack it on-top of another adjacent crate, Goal Test:  The monkeys y position, when added to it's own height, and x direction will be a overlapping position of the bananas.\}
+\item \{State Space: Each record is individual, so potentially each record can either be included in the file, or omitted. Records present in the file would be a discrete state. Additionally, we need to maintain the output variable received from the program,Start State: A file of input records,Successor Function: Half the file of input records, Goal Test:  The record \}
+\item \{State Space: Each jug has related value to how much water is in it, there are the number of states where each jug has a different amount of water in it,Start State: 3 jugs with no water in them currently,Successor Function: Three actions are taken, either a jug is poured into another(we then empty contents of that jug and add the value to the other), a jug is poured onto the ground and is now marked as an empty jug, or a jug is filled up, in which case it is filled to its full capacity, Goal Test: One jug contains exactly one gallon of water\}
+\end{enumerate} \hfill \break
+
+\section*{Question 5 - (3.23)}
+\textbf{Q.} Trace the operation of the A* search algorithm applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node.    \hfill \break
+
+\textbf{A.} My answer can be seen in the table. There is the current node visited, alongside the fringe values. The fringe will be (City Name, heuristic + cost value):\hfill \break 
+\begin{tabular}{ |p{1.7cm}||p{14.5cm}| }
+ \hline
+ \multicolumn{2}{|c|}{A* Search Application} \\
+ \hline
+Current Node & Fringe \\
+ \hline
+Start   & {(Lugoj, 244 + 0)} \\
+Lugoj &   {(Mehadia, 70 + 241),(Timisoara, 111 + 329)}  \\
+Mehadia & {(Dobreta, 242 + 145),(Timisoara, 111 + 329)}  \\
+Dobreta   & {(Craiova, 265 + 160),(Timisoara, 111 + 329)} \\
+Craiova &   {(Timisoara, 111 + 329),(Pitesti,100 + 403),(Rimnicu Vilcea, 411 + 193)}  \\
+Timisoara & {(Rimnicu Vilcea, 411+ 193),(Arad, 229 + 366),(Pitesti,100 + 403)}  \\
+Pitesti & {(Rimnicu Vilcea, 411+ 193),(Arad, 229 + 366),Rimnicu Vilceai, 500 + 193), (Bucharest, 504 + 0)}  \\
+Bucharest & At Goal, goal state dequeued \\
+ \hline
+\end{tabular}
+\hfill \break
+
+\section*{Question 6 - (3.23)}
+\textbf{Q.} Trace the operation of the A* search algorithm applied to the problem of getting to Bucharest from Lugoj using the straight-line distance heuristic. That is, show the sequence of nodes that the algorithm will consider and the f, g, and h score for each node. In this question, we apply DFS and BFS, and demonstrate how the fringe is updated for the first four nodes.  \hfill \break
+
+\textbf{A.} I will start with application of the DFS to the problem of travelling to Bucharest from Lugoj:\hfill \break
+\begin{tabular}{ |p{1.7cm}||p{14.5cm}| }
+ \hline
+ \multicolumn{2}{|c|}{DFS Search Application} \\
+ \hline
+Current Node & Fringe \\
+ \hline
+Start   & {(Lugoj)} \\
+Lugoj &   {(Timisoara),(Mehadia)}  \\
+Timisoara & {(Arad),(Mehadia)}  \\
+Arad   & {(Zerind),(Sibiu),(Mehadia)} \\
+Zerind &   {(Oradea),(Sibiu),(Mehadia)}  \\
+ \hline
+\end{tabular}
+These are the first four values of the fringe. In addition however, we'll also compute Breadth first search on the problem. \hfill \break
+\begin{tabular}{ |p{1.7cm}||p{14.5cm}| }
+ \hline
+ \multicolumn{2}{|c|}{BFS Search Application} \\
+ \hline
+Current Node & Fringe \\
+ \hline
+Start   & {(Lugoj)} \\
+Lugoj &   {(Timisoara),(Mehadia)}  \\
+Timisoara & {(Mehadia),(Arad)}  \\
+Mehadia  & {(Arad),(Dobreta)} \\
+Arad &   {(Dobreta),(Zerind),(Sibiu)}  \\
+ \hline
+\end{tabular}
+\hfill \break
+
+\section*{Question 8 - (3.9)}
+\textbf{Q.} The missionaries and cannibals problem is usually stated as follows. Three missionaries and three cannibals are on one side of a river, along with a boat that can hold one or two people. Find a way to get everyone to the other side without ever leaving a group of missionaries in one place outnumbered by the cannibals in that place. This problem is famous in AI because it was the subject of the first paper that approached problem formulation from an analytical viewpoint (Amarel, 1968).
+
+\begin{enumerate}[a)]
+  \item Formulate the problem precisely, making only those distinctions necessary to ensure a valid solution. Draw a diagram of the complete state space
+
+    \item Implement and solve the problem optimally using an appropriate search algorithm. Is it a good idea to check for repeated states?
+
+       \item  Why do you think people have a hard time solving this puzzle, given that the state space is so simple?
+       
+\end{enumerate} \hfill \break
+
+\textbf{A.}
+
+\begin{enumerate}[a)]
+  \item I formulate the problem in the form of two sides of the river. A set would represent the initial side, another set would represent the goal side. Each set consists of the \# of people on the side in the form \[Humans\#, Cannibals\#\]. For instance, the starting state consisting of 3 humans and 3 cannibals would look like this\[ \{[3,3],[0,0]\} \]
+  
+  With this representation we can have all the states possible in the problem visible in the following table. I start with the number of people of the start bank of the river, and have the other two columns for the end bank of the river.
+  
+  \begin{tabular}{ |p{1cm}||p{1cm}|p{1cm}| p{1cm}|  }
+ \hline
+ \multicolumn{4}{|c|}{State Space} \\
+ \hline
+H & C & H& C \\
+ \hline
+\cellcolor[HTML]{0000FF} 3   & \cellcolor[HTML]{0000FF} 3 &\cellcolor[HTML]{0000FF} 0 & \cellcolor[HTML]{0000FF} 0\\
+3 &   2  & 0 & 1\\
+3 &   1 & 0 & 2\\
+3 & 0   & 0 & 3\\
+ \cellcolor[HTML]{AA0044} 2   &   \cellcolor[HTML]{AA0044}3 &   \cellcolor[HTML]{AA0044}1 &   \cellcolor[HTML]{AA0044}0\\
+2 &   2  & 1& 1\\
+ \cellcolor[HTML]{AA0044} 2 &   \cellcolor[HTML]{AA0044} 1 &  \cellcolor[HTML]{AA0044} 1 & \cellcolor[HTML]{AA0044} 2\\
+ \cellcolor[HTML]{AA0044} 2 & \cellcolor[HTML]{AA0044} 0   & \cellcolor[HTML]{AA0044} 1 &  \cellcolor[HTML]{AA0044} 3\\
+ \cellcolor[HTML]{AA0044}1   &  \cellcolor[HTML]{AA0044} 3 &  \cellcolor[HTML]{AA0044}2 &  \cellcolor[HTML]{AA0044}0\\
+ \cellcolor[HTML]{AA0044}1 &    \cellcolor[HTML]{AA0044} 2  &  \cellcolor[HTML]{AA0044} 2&  \cellcolor[HTML]{AA0044} 1\\
+1 &   1 & 2 & 2\\
+  \cellcolor[HTML]{AA0044} 1 &  \cellcolor[HTML]{AA0044} 0   & \cellcolor[HTML]{AA0044}  2 &  \cellcolor[HTML]{AA0044} 3\\
+0   & 3 & 3 & 0\\
+0 &   2  & 3& 1\\
+0 &   1 & 3 & 2\\
+\cellcolor[HTML]{00FF00} 0 &\cellcolor[HTML]{00FF00} 0   &\cellcolor[HTML]{00FF00} 3 & \cellcolor[HTML]{00FF00} 3\\
+ \hline
+ 
+\end{tabular}
+
+The game has 16 states, however, 6 are losing states of the game, which we notate with red. The starting state is blue, and consists of the three humans and cannibals on the left side of the bank. The goal state is the green state, where the three humans and cannibals reach the other side of the bank successfully. A successor function for the representation would be the people on the boat. In other words, we notate the boat as a set \{\#Humans,\#Cannibals\}. An agent in this problem can transition states by defining two people to put into the boat. If the agent wants 1 of each group to go on the boat from the start state, we would draw an arrow from the start state to state \{[2,2],[1,1]\}, and draw \{1,1\} to show the people present on the boat in the transition.
+\hfill \break
+
+    \item Yes it is important to check this as it would indicate a suboptimal solution(a repeated state would put us in a loop). I implemented the breadth first search algorithm, and set all costs to be one. The final solution has no repeating states, so this is something we need to keep in mind if we were to implement the algorithm again in hardware.
+
+       \item  I think the problem seems much more complicated and open ended than it is. I had a hard idea wrapping my head around the problem, even when I wrote down all the possibilities. The problem is actually very simple, and doesn't have a lot of possibilities, but I think to us humans we worry that we aren't achieving the optimal solution.
+       
+\end{enumerate} \hfill \break
+
+
+
+\end{document}
